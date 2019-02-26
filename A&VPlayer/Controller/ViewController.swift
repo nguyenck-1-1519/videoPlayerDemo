@@ -12,9 +12,11 @@ import AVKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var watchVideoButton: UIButton!
+    @IBOutlet weak var minimizePlayerView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        minimizePlayerView.isHidden = true
     }
 
     override func viewDidLayoutSubviews() {
@@ -25,7 +27,7 @@ class ViewController: UIViewController {
         watchVideoButton.clipsToBounds = true
     }
 
-    @IBAction func onWatchVideoButtonClicked(_ sender: UIButton) {
+    private func prapareToVideoView() {
         guard let path = Bundle.main.path(forResource: "kPop", ofType: "mp4") else {
             return
         }
@@ -34,9 +36,30 @@ class ViewController: UIViewController {
             return
         }
         let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VideoPlayerController") as! VideoPlayerController
-        viewController.urls = [videoUrl_1, videoUrl_2]
+        PlayerManager.shared.playlistUrls = [videoUrl_1, videoUrl_2]
+        viewController.delegate = self
         present(viewController, animated: true, completion: nil)
     }
 
+    @IBAction func onWatchVideoButtonClicked(_ sender: UIButton) {
+        prapareToVideoView()
+    }
+
+    @IBAction func onMinimizePlayerClicked(_ sender: UITapGestureRecognizer) {
+        prapareToVideoView()
+    }
 }
 
+extension ViewController: VideoPlayerControllerDelegate {
+    
+    func onMinimizePlayer() {
+        minimizePlayerView.isHidden = false
+        minimizePlayerView.dropShadow()
+        guard let avlayer = PlayerManager.shared.avPlayerLayer else { return }
+        minimizePlayerView.layer.addSublayer(avlayer)
+        avlayer.frame = CGRect(x: 0, y: 0, width: minimizePlayerView.bounds.width,
+                               height: minimizePlayerView.bounds.height)
+
+    }
+
+}

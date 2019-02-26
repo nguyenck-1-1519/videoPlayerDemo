@@ -10,6 +10,10 @@ import UIKit
 import AVKit
 import AVFoundation
 
+protocol VideoPlayerControllerDelegate: class {
+    func onMinimizePlayer()
+}
+
 class VideoPlayerController: UIViewController {
     @IBOutlet weak var minimizeButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
@@ -22,7 +26,8 @@ class VideoPlayerController: UIViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var speedSegment: UISegmentedControl!
-    
+
+    weak var delegate: VideoPlayerControllerDelegate?
     var urls: [URL]?
     var avPlayer: AVPlayer?
     var avPlayerLayer: AVPlayerLayer?
@@ -38,7 +43,9 @@ class VideoPlayerController: UIViewController {
         super.viewDidLoad()
         configControlView()
         configSpeedSegment()
-        configPlayer()
+        PlayerManager.shared.delegate = self
+        let isPlaying = PlayerManager.shared.avPlayer != nil
+        isPlaying ? PlayerManager.shared.continueAVPlayer(forController: self) : PlayerManager.shared.configAVPlayer(forController: self)
         configSeeker()
     }
 
@@ -58,7 +65,7 @@ class VideoPlayerController: UIViewController {
     }
 
     deinit {
-        stopObserver()
+        PlayerManager.shared.stopObserver(forController: self)
     }
 
     // MARK: Observer
@@ -73,7 +80,8 @@ class VideoPlayerController: UIViewController {
             switch status {
             case .readyToPlay:
                 currentTrack?.state = .readyToPlay
-                play()
+                playButton.setImage(#imageLiteral(resourceName: "pauseButton"), for: .normal)
+                PlayerManager.shared.play()
             default:
                 break
             }
@@ -84,55 +92,10 @@ class VideoPlayerController: UIViewController {
         }
     }
 
-    private func startObserver() {
-        let interval = CMTime(seconds: 1.0, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-        guard let avPlayer = avPlayer, let durationCMTimeFormat = avPlayer.currentItem?.asset.duration else {
-            return
-        }
-        let duration = CMTimeGetSeconds(durationCMTimeFormat)
-        timeObserver = avPlayer.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
-            guard let currentTrack = self?.currentTrack else { return }
-            if currentTrack.state != .seeking {
-                self?.timeTrackingSlider.setValue(Float(time.seconds / Double(duration)), animated: true)
-            }
-            if Float(time.seconds / Double(duration)) >= 1 {
-                self?.currentTrack?.state = .playedToTheEnd
-                self?.playButton.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
-            }
-            self?.setTimeLabel(withDuration: duration, currentTime: time.seconds)
-        }
-        // add KVO
-        avPlayer.currentItem?.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: .new, context: nil)
-        avPlayer.currentItem?.addObserver(self, forKeyPath: Constant.loadTimeRangedKey, options: .new, context: nil)
-    }
-
-    private func stopObserver() {
-        if let timeObserver = timeObserver {
-            avPlayer?.removeTimeObserver(timeObserver)
-            avPlayer?.currentItem?.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status))
-            avPlayer?.currentItem?.removeObserver(self, forKeyPath: Constant.loadTimeRangedKey)
-            self.timeObserver = nil
-        }
-    }
-
     // MARK: Private func
     private func setTimeLabel(withDuration duration: Double, currentTime: Double) {
         timeLabel.text = Utilities.formatDurationTime(time: Int(currentTime)) + "/" +
             Utilities.formatDurationTime(time: Int(duration))
-    }
-
-    private func configPlayer() {
-        guard let urls = urls else { return }
-        currentTrack = Track(url: urls[0], index: 0)
-        avPlayer = AVPlayer()
-        avPlayerLayer = AVPlayerLayer(player: avPlayer)
-        avPlayerLayer?.videoGravity = .resizeAspect
-        if let layer = avPlayerLayer {
-            playerView.layer.addSublayer(layer)
-            layer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width,
-                                 height: UIScreen.main.bounds.height)
-        }
-        prepareForPlay()
     }
 
     private func onLoadedTimeRangedChanged(newValue: [NSValue]?, duration: CGFloat) {
@@ -225,41 +188,6 @@ class VideoPlayerController: UIViewController {
         return Track(url: urls[previousIndex], index: previousIndex)
     }
 
-    // call first at all when open new song
-    private func prepareForPlay() {
-        stopObserver()
-        currentTrack?.playerItem.canUseNetworkResourcesForLiveStreamingWhilePaused = true
-        avPlayer?.replaceCurrentItem(with: currentTrack?.playerItem)
-        startObserver()
-        setHiddenControlButton()
-    }
-
-    private func play() {
-        guard let avPlayer = avPlayer, currentTrack?.state != .playedToTheEnd else { return }
-        avPlayer.play()
-        playButton.setImage(#imageLiteral(resourceName: "pauseButton"), for: .normal)
-    }
-
-    private func pause() {
-        guard let avPlayer = avPlayer else { return }
-        avPlayer.pause()
-        playButton.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
-    }
-
-    private func playNextItem() {
-        configSpeedSegment()
-        resetSeeker()
-        currentTrack = getNextItem()
-        prepareForPlay()
-    }
-
-    private func playPreviousItem() {
-        configSpeedSegment()
-        resetSeeker()
-        currentTrack = getPreviousItem()
-        prepareForPlay()
-    }
-
     @objc private func handleSliderChangeValue(sender: AnyObject, event: UIEvent) {
         guard let handleEvent = event.allTouches?.first else { return }
         switch handleEvent.phase {
@@ -285,20 +213,31 @@ class VideoPlayerController: UIViewController {
         guard let avPlayer = avPlayer else {
             return
         }
-        avPlayer.isPlaying ? pause() : play()
+        if avPlayer.isPlaying {
+            PlayerManager.shared.pause()
+            playButton.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
+        } else {
+            PlayerManager.shared.play()
+            playButton.setImage(#imageLiteral(resourceName: "pauseButton"), for: .normal)
+        }
     }
 
     @IBAction func onNextButtonClicked(_ sender: UIButton) {
-        pause()
-        playNextItem()
+        configSpeedSegment()
+        resetSeeker()
+//        playButton.setImage(#imageLiteral(resourceName: "pauseButton"), for: .normal)
+        PlayerManager.shared.playNext(forController: self)
     }
 
     @IBAction func onPreviousButtonClicked(_ sender: UIButton) {
-        pause()
-        playPreviousItem()
+        configSpeedSegment()
+        resetSeeker()
+//        playButton.setImage(#imageLiteral(resourceName: "pauseButton"), for: .normal)
+        PlayerManager.shared.playPrevious(forController: self)
     }
 
     @IBAction func onMinimizeButtonClicked(_ sender: UIButton) {
+        delegate?.onMinimizePlayer()
         dismiss(animated: true, completion: nil)
     }
 
@@ -306,4 +245,33 @@ class VideoPlayerController: UIViewController {
         let speed = speedSegment.selectedSegmentIndex == 0 ? 0.5 : Double(speedSegment.selectedSegmentIndex)
         avPlayer?.rate = Float(speed)
     }
+}
+
+extension VideoPlayerController: PlayerManagerDelegate {
+
+    func onConfigAVPlayerTrigger(layer: AVPlayerLayer?) {
+        // template code
+        guard let layer = layer else { return }
+        self.avPlayerLayer = layer
+        urls = PlayerManager.shared.playlistUrls
+        playerView.layer.addSublayer(layer)
+        layer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width,
+                                      height: UIScreen.main.bounds.height)
+        avPlayer = PlayerManager.shared.avPlayer
+        currentTrack = PlayerManager.shared.currentTrack
+        setHiddenControlButton()
+    }
+
+    func onTimeObserverTrigger(currentTime: Double, duration: Double) {
+        guard let currentTrack = self.currentTrack else { return }
+        if currentTrack.state != .seeking {
+            self.timeTrackingSlider.setValue(Float(currentTime / Double(duration)), animated: true)
+        }
+        if Float(currentTime / Double(duration)) >= 1 {
+            self.currentTrack?.state = .playedToTheEnd
+            self.playButton.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
+        }
+        self.setTimeLabel(withDuration: duration, currentTime: currentTime)
+    }
+
 }

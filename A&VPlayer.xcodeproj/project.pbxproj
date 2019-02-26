@@ -1,0 +1,780 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B917513CBCE783C32F8C956 /* Pods_A_VPlayerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE4B5CF64D3216D817A3F6F /* Pods_A_VPlayerTests.framework */; };
+		5875DC8C2F2262CE72D587F7 /* Pods_A_VPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D891A68E3D2B8D9138F70C /* Pods_A_VPlayer.framework */; };
+		61B3CD36221E523700B05431 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B3CD35221E523700B05431 /* AppDelegate.swift */; };
+		61B3CD38221E523700B05431 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B3CD37221E523700B05431 /* ViewController.swift */; };
+		61B3CD3B221E523700B05431 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61B3CD39221E523700B05431 /* Main.storyboard */; };
+		61B3CD3D221E523800B05431 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61B3CD3C221E523800B05431 /* Assets.xcassets */; };
+		61B3CD40221E523800B05431 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61B3CD3E221E523800B05431 /* LaunchScreen.storyboard */; };
+		61B3CD4B221E523900B05431 /* A_VPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B3CD4A221E523900B05431 /* A_VPlayerTests.swift */; };
+		61B3CD56221E523900B05431 /* A_VPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B3CD55221E523900B05431 /* A_VPlayerUITests.swift */; };
+		61B3CD67221E55AD00B05431 /* kPop.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 61B3CD66221E55AD00B05431 /* kPop.mp4 */; };
+		61B3CD69221E962500B05431 /* VideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B3CD68221E962500B05431 /* VideoPlayerController.swift */; };
+		61B3CD6B221E9DDE00B05431 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B3CD6A221E9DDE00B05431 /* Utilities.swift */; };
+		61B3CD6E221EB25800B05431 /* AVPlayer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B3CD6D221EB25800B05431 /* AVPlayer+Ext.swift */; };
+		61DBCDD12224E2050091EF26 /* EnumDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBCDD02224E2050091EF26 /* EnumDefine.swift */; };
+		61DBCDD32224E2100091EF26 /* StructDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBCDD22224E2100091EF26 /* StructDefine.swift */; };
+		9000C34F3D637C781A99E244 /* Pods_A_VPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA611D58B602D0E1B569B4B7 /* Pods_A_VPlayerUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		61B3CD47221E523900B05431 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61B3CD2A221E523700B05431 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61B3CD31221E523700B05431;
+			remoteInfo = "A&VPlayer";
+		};
+		61B3CD52221E523900B05431 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61B3CD2A221E523700B05431 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61B3CD31221E523700B05431;
+			remoteInfo = "A&VPlayer";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		13A989C3FB28CCCF6F2E6FC3 /* Pods-A&VPlayerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A&VPlayerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-A&VPlayerTests/Pods-A&VPlayerTests.release.xcconfig"; sourceTree = "<group>"; };
+		1AE4B5CF64D3216D817A3F6F /* Pods_A_VPlayerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_A_VPlayerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44883CD7A6C187A3C0AA4DE6 /* Pods-A&VPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A&VPlayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-A&VPlayer/Pods-A&VPlayer.release.xcconfig"; sourceTree = "<group>"; };
+		61B3CD32221E523700B05431 /* A&VPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A&VPlayer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61B3CD35221E523700B05431 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		61B3CD37221E523700B05431 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		61B3CD3A221E523700B05431 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		61B3CD3C221E523800B05431 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		61B3CD3F221E523800B05431 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		61B3CD41221E523800B05431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61B3CD46221E523900B05431 /* A&VPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "A&VPlayerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61B3CD4A221E523900B05431 /* A_VPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A_VPlayerTests.swift; sourceTree = "<group>"; };
+		61B3CD4C221E523900B05431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61B3CD51221E523900B05431 /* A&VPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "A&VPlayerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61B3CD55221E523900B05431 /* A_VPlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A_VPlayerUITests.swift; sourceTree = "<group>"; };
+		61B3CD57221E523900B05431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61B3CD66221E55AD00B05431 /* kPop.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = kPop.mp4; sourceTree = "<group>"; };
+		61B3CD68221E962500B05431 /* VideoPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerController.swift; sourceTree = "<group>"; };
+		61B3CD6A221E9DDE00B05431 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		61B3CD6D221EB25800B05431 /* AVPlayer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Ext.swift"; sourceTree = "<group>"; };
+		61DBCDD02224E2050091EF26 /* EnumDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumDefine.swift; sourceTree = "<group>"; };
+		61DBCDD22224E2100091EF26 /* StructDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructDefine.swift; sourceTree = "<group>"; };
+		9A49BF9A6B1F4D41C19D2165 /* Pods-A&VPlayerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A&VPlayerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-A&VPlayerUITests/Pods-A&VPlayerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B6D891A68E3D2B8D9138F70C /* Pods_A_VPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_A_VPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7B75A3A67513F58D626DBF1 /* Pods-A&VPlayerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A&VPlayerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-A&VPlayerUITests/Pods-A&VPlayerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C56C6AE3C0721740DEE5A22C /* Pods-A&VPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A&VPlayerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-A&VPlayerTests/Pods-A&VPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA611D58B602D0E1B569B4B7 /* Pods_A_VPlayerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_A_VPlayerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5C14195F6EE66DDCDD51242 /* Pods-A&VPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A&VPlayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-A&VPlayer/Pods-A&VPlayer.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61B3CD2F221E523700B05431 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5875DC8C2F2262CE72D587F7 /* Pods_A_VPlayer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61B3CD43221E523900B05431 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B917513CBCE783C32F8C956 /* Pods_A_VPlayerTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61B3CD4E221E523900B05431 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9000C34F3D637C781A99E244 /* Pods_A_VPlayerUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C1CD1790F7ECCDFC59B1A4E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6D891A68E3D2B8D9138F70C /* Pods_A_VPlayer.framework */,
+				1AE4B5CF64D3216D817A3F6F /* Pods_A_VPlayerTests.framework */,
+				CA611D58B602D0E1B569B4B7 /* Pods_A_VPlayerUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61B3CD29221E523700B05431 = {
+			isa = PBXGroup;
+			children = (
+				61B3CD34221E523700B05431 /* A&VPlayer */,
+				61B3CD49221E523900B05431 /* A&VPlayerTests */,
+				61B3CD54221E523900B05431 /* A&VPlayerUITests */,
+				61B3CD33221E523700B05431 /* Products */,
+				65059EAD0A96ED604FDCF9D2 /* Pods */,
+				1C1CD1790F7ECCDFC59B1A4E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		61B3CD33221E523700B05431 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61B3CD32221E523700B05431 /* A&VPlayer.app */,
+				61B3CD46221E523900B05431 /* A&VPlayerTests.xctest */,
+				61B3CD51221E523900B05431 /* A&VPlayerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61B3CD34221E523700B05431 /* A&VPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				61B3CD7122238CD000B05431 /* Controller */,
+				61B3CD6C221EB20E00B05431 /* Extension */,
+				61B3CD65221E559D00B05431 /* Resource */,
+				61B3CD35221E523700B05431 /* AppDelegate.swift */,
+				61B3CD6A221E9DDE00B05431 /* Utilities.swift */,
+				61B3CD39221E523700B05431 /* Main.storyboard */,
+				61B3CD3C221E523800B05431 /* Assets.xcassets */,
+				61B3CD3E221E523800B05431 /* LaunchScreen.storyboard */,
+				61B3CD41221E523800B05431 /* Info.plist */,
+				61DBCDD02224E2050091EF26 /* EnumDefine.swift */,
+				61DBCDD22224E2100091EF26 /* StructDefine.swift */,
+			);
+			path = "A&VPlayer";
+			sourceTree = "<group>";
+		};
+		61B3CD49221E523900B05431 /* A&VPlayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				61B3CD4A221E523900B05431 /* A_VPlayerTests.swift */,
+				61B3CD4C221E523900B05431 /* Info.plist */,
+			);
+			path = "A&VPlayerTests";
+			sourceTree = "<group>";
+		};
+		61B3CD54221E523900B05431 /* A&VPlayerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				61B3CD55221E523900B05431 /* A_VPlayerUITests.swift */,
+				61B3CD57221E523900B05431 /* Info.plist */,
+			);
+			path = "A&VPlayerUITests";
+			sourceTree = "<group>";
+		};
+		61B3CD65221E559D00B05431 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				61B3CD66221E55AD00B05431 /* kPop.mp4 */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		61B3CD6C221EB20E00B05431 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				61B3CD6D221EB25800B05431 /* AVPlayer+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		61B3CD7122238CD000B05431 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				61B3CD68221E962500B05431 /* VideoPlayerController.swift */,
+				61B3CD37221E523700B05431 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		65059EAD0A96ED604FDCF9D2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E5C14195F6EE66DDCDD51242 /* Pods-A&VPlayer.debug.xcconfig */,
+				44883CD7A6C187A3C0AA4DE6 /* Pods-A&VPlayer.release.xcconfig */,
+				C56C6AE3C0721740DEE5A22C /* Pods-A&VPlayerTests.debug.xcconfig */,
+				13A989C3FB28CCCF6F2E6FC3 /* Pods-A&VPlayerTests.release.xcconfig */,
+				B7B75A3A67513F58D626DBF1 /* Pods-A&VPlayerUITests.debug.xcconfig */,
+				9A49BF9A6B1F4D41C19D2165 /* Pods-A&VPlayerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		61B3CD31221E523700B05431 /* A&VPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61B3CD5A221E523900B05431 /* Build configuration list for PBXNativeTarget "A&VPlayer" */;
+			buildPhases = (
+				A8D722C89C383B1F8C49FD74 /* [CP] Check Pods Manifest.lock */,
+				61B3CD2E221E523700B05431 /* Sources */,
+				61B3CD2F221E523700B05431 /* Frameworks */,
+				61B3CD30221E523700B05431 /* Resources */,
+				2C35D6F1BDB91D8DE8CFA8B5 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "A&VPlayer";
+			productName = "A&VPlayer";
+			productReference = 61B3CD32221E523700B05431 /* A&VPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		61B3CD45221E523900B05431 /* A&VPlayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61B3CD5D221E523900B05431 /* Build configuration list for PBXNativeTarget "A&VPlayerTests" */;
+			buildPhases = (
+				AA3741FBB83F938005929747 /* [CP] Check Pods Manifest.lock */,
+				61B3CD42221E523900B05431 /* Sources */,
+				61B3CD43221E523900B05431 /* Frameworks */,
+				61B3CD44221E523900B05431 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				61B3CD48221E523900B05431 /* PBXTargetDependency */,
+			);
+			name = "A&VPlayerTests";
+			productName = "A&VPlayerTests";
+			productReference = 61B3CD46221E523900B05431 /* A&VPlayerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		61B3CD50221E523900B05431 /* A&VPlayerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61B3CD60221E523900B05431 /* Build configuration list for PBXNativeTarget "A&VPlayerUITests" */;
+			buildPhases = (
+				28653A4DB44A49514AD29F59 /* [CP] Check Pods Manifest.lock */,
+				61B3CD4D221E523900B05431 /* Sources */,
+				61B3CD4E221E523900B05431 /* Frameworks */,
+				61B3CD4F221E523900B05431 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				61B3CD53221E523900B05431 /* PBXTargetDependency */,
+			);
+			name = "A&VPlayerUITests";
+			productName = "A&VPlayerUITests";
+			productReference = 61B3CD51221E523900B05431 /* A&VPlayerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61B3CD2A221E523700B05431 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = can.khac.nguyen;
+				TargetAttributes = {
+					61B3CD31221E523700B05431 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					61B3CD45221E523900B05431 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 61B3CD31221E523700B05431;
+					};
+					61B3CD50221E523900B05431 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 61B3CD31221E523700B05431;
+					};
+				};
+			};
+			buildConfigurationList = 61B3CD2D221E523700B05431 /* Build configuration list for PBXProject "A&VPlayer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 61B3CD29221E523700B05431;
+			productRefGroup = 61B3CD33221E523700B05431 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				61B3CD31221E523700B05431 /* A&VPlayer */,
+				61B3CD45221E523900B05431 /* A&VPlayerTests */,
+				61B3CD50221E523900B05431 /* A&VPlayerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		61B3CD30221E523700B05431 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61B3CD40221E523800B05431 /* LaunchScreen.storyboard in Resources */,
+				61B3CD67221E55AD00B05431 /* kPop.mp4 in Resources */,
+				61B3CD3D221E523800B05431 /* Assets.xcassets in Resources */,
+				61B3CD3B221E523700B05431 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61B3CD44221E523900B05431 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61B3CD4F221E523900B05431 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		28653A4DB44A49514AD29F59 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-A&VPlayerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2C35D6F1BDB91D8DE8CFA8B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-A&VPlayer/Pods-A&VPlayer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BufferSlider/BufferSlider.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BufferSlider.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-A&VPlayer/Pods-A&VPlayer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8D722C89C383B1F8C49FD74 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-A&VPlayer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA3741FBB83F938005929747 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-A&VPlayerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		61B3CD2E221E523700B05431 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61B3CD6E221EB25800B05431 /* AVPlayer+Ext.swift in Sources */,
+				61DBCDD12224E2050091EF26 /* EnumDefine.swift in Sources */,
+				61B3CD38221E523700B05431 /* ViewController.swift in Sources */,
+				61DBCDD32224E2100091EF26 /* StructDefine.swift in Sources */,
+				61B3CD69221E962500B05431 /* VideoPlayerController.swift in Sources */,
+				61B3CD6B221E9DDE00B05431 /* Utilities.swift in Sources */,
+				61B3CD36221E523700B05431 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61B3CD42221E523900B05431 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61B3CD4B221E523900B05431 /* A_VPlayerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61B3CD4D221E523900B05431 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61B3CD56221E523900B05431 /* A_VPlayerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		61B3CD48221E523900B05431 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61B3CD31221E523700B05431 /* A&VPlayer */;
+			targetProxy = 61B3CD47221E523900B05431 /* PBXContainerItemProxy */;
+		};
+		61B3CD53221E523900B05431 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61B3CD31221E523700B05431 /* A&VPlayer */;
+			targetProxy = 61B3CD52221E523900B05431 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		61B3CD39221E523700B05431 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61B3CD3A221E523700B05431 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		61B3CD3E221E523800B05431 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61B3CD3F221E523800B05431 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		61B3CD58221E523900B05431 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		61B3CD59221E523900B05431 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		61B3CD5B221E523900B05431 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5C14195F6EE66DDCDD51242 /* Pods-A&VPlayer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DZNDUUNX92;
+				INFOPLIST_FILE = "A&VPlayer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "shin.A-VPlayer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Access WildCard";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		61B3CD5C221E523900B05431 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44883CD7A6C187A3C0AA4DE6 /* Pods-A&VPlayer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "A&VPlayer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "shin.A-VPlayer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		61B3CD5E221E523900B05431 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C56C6AE3C0721740DEE5A22C /* Pods-A&VPlayerTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "A&VPlayerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "shin.A-VPlayerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/A&VPlayer.app/A&VPlayer";
+			};
+			name = Debug;
+		};
+		61B3CD5F221E523900B05431 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13A989C3FB28CCCF6F2E6FC3 /* Pods-A&VPlayerTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "A&VPlayerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "shin.A-VPlayerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/A&VPlayer.app/A&VPlayer";
+			};
+			name = Release;
+		};
+		61B3CD61221E523900B05431 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7B75A3A67513F58D626DBF1 /* Pods-A&VPlayerUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "A&VPlayerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "shin.A-VPlayerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "A&VPlayer";
+			};
+			name = Debug;
+		};
+		61B3CD62221E523900B05431 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A49BF9A6B1F4D41C19D2165 /* Pods-A&VPlayerUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "A&VPlayerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "shin.A-VPlayerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "A&VPlayer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		61B3CD2D221E523700B05431 /* Build configuration list for PBXProject "A&VPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61B3CD58221E523900B05431 /* Debug */,
+				61B3CD59221E523900B05431 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61B3CD5A221E523900B05431 /* Build configuration list for PBXNativeTarget "A&VPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61B3CD5B221E523900B05431 /* Debug */,
+				61B3CD5C221E523900B05431 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61B3CD5D221E523900B05431 /* Build configuration list for PBXNativeTarget "A&VPlayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61B3CD5E221E523900B05431 /* Debug */,
+				61B3CD5F221E523900B05431 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61B3CD60221E523900B05431 /* Build configuration list for PBXNativeTarget "A&VPlayerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61B3CD61221E523900B05431 /* Debug */,
+				61B3CD62221E523900B05431 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 61B3CD2A221E523700B05431 /* Project object */;
+}

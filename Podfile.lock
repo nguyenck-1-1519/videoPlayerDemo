@@ -1,0 +1,16 @@
+PODS:
+  - BufferSlider (0.1.6)
+
+DEPENDENCIES:
+  - BufferSlider
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - BufferSlider
+
+SPEC CHECKSUMS:
+  BufferSlider: f95e72170e9ba51799c62090295ee50e193521ef
+
+PODFILE CHECKSUM: dba14af26840c6f247100270882ebe8ec98920e4
+
+COCOAPODS: 1.5.3

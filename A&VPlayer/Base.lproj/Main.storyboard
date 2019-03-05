@@ -32,19 +32,39 @@
                                     <action selector="onWatchVideoButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rw8-0U-dSB"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uN5-Ed-hBg">
+                                <rect key="frame" x="123" y="524.5" width="250" height="140.5"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uN5-Ed-hBg" secondAttribute="height" multiplier="16:9" id="CIb-bu-uks"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4le-uG-XGb" appends="YES" id="3wc-CM-qKV"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="uN5-Ed-hBg" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="2/3" id="RSV-wa-XJm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uN5-Ed-hBg" secondAttribute="trailing" constant="2" id="eln-Lh-5Jl"/>
                             <constraint firstItem="WRI-Ic-Ox0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jKL-DI-HCe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uN5-Ed-hBg" secondAttribute="bottom" constant="2" id="mhG-fP-j7p"/>
                             <constraint firstItem="WRI-Ic-Ox0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="101" id="qnz-NK-zMo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="minimizePlayerView" destination="uN5-Ed-hBg" id="SMa-nQ-2oF"/>
                         <outlet property="watchVideoButton" destination="WRI-Ic-Ox0" id="Vpw-5K-e0m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4le-uG-XGb">
+                    <connections>
+                        <action selector="onMinimizePlayerClicked:" destination="BYZ-38-t0r" id="23e-5N-nke"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
         </scene>

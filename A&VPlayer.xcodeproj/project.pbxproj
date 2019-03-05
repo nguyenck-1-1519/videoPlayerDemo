@@ -22,6 +22,8 @@
 		61B3CD6E221EB25800B05431 /* AVPlayer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B3CD6D221EB25800B05431 /* AVPlayer+Ext.swift */; };
 		61DBCDD12224E2050091EF26 /* EnumDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBCDD02224E2050091EF26 /* EnumDefine.swift */; };
 		61DBCDD32224E2100091EF26 /* StructDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBCDD22224E2100091EF26 /* StructDefine.swift */; };
+		61DBCDD62224F5B50091EF26 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBCDD52224F5B50091EF26 /* PlayerManager.swift */; };
+		61DBCDD8222523B20091EF26 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBCDD7222523B20091EF26 /* UIView+Ext.swift */; };
 		9000C34F3D637C781A99E244 /* Pods_A_VPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA611D58B602D0E1B569B4B7 /* Pods_A_VPlayerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,8 @@
 		61B3CD6D221EB25800B05431 /* AVPlayer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Ext.swift"; sourceTree = "<group>"; };
 		61DBCDD02224E2050091EF26 /* EnumDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumDefine.swift; sourceTree = "<group>"; };
 		61DBCDD22224E2100091EF26 /* StructDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructDefine.swift; sourceTree = "<group>"; };
+		61DBCDD52224F5B50091EF26 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
+		61DBCDD7222523B20091EF26 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		9A49BF9A6B1F4D41C19D2165 /* Pods-A&VPlayerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A&VPlayerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-A&VPlayerUITests/Pods-A&VPlayerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B6D891A68E3D2B8D9138F70C /* Pods_A_VPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_A_VPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7B75A3A67513F58D626DBF1 /* Pods-A&VPlayerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-A&VPlayerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-A&VPlayerUITests/Pods-A&VPlayerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,17 +140,15 @@
 		61B3CD34221E523700B05431 /* A&VPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				61DBCDD42224F58C0091EF26 /* Helper */,
 				61B3CD7122238CD000B05431 /* Controller */,
 				61B3CD6C221EB20E00B05431 /* Extension */,
 				61B3CD65221E559D00B05431 /* Resource */,
 				61B3CD35221E523700B05431 /* AppDelegate.swift */,
-				61B3CD6A221E9DDE00B05431 /* Utilities.swift */,
 				61B3CD39221E523700B05431 /* Main.storyboard */,
 				61B3CD3C221E523800B05431 /* Assets.xcassets */,
 				61B3CD3E221E523800B05431 /* LaunchScreen.storyboard */,
 				61B3CD41221E523800B05431 /* Info.plist */,
-				61DBCDD02224E2050091EF26 /* EnumDefine.swift */,
-				61DBCDD22224E2100091EF26 /* StructDefine.swift */,
 			);
 			path = "A&VPlayer";
 			sourceTree = "<group>";
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				61B3CD6D221EB25800B05431 /* AVPlayer+Ext.swift */,
+				61DBCDD7222523B20091EF26 /* UIView+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -190,8 +193,19 @@
 			children = (
 				61B3CD68221E962500B05431 /* VideoPlayerController.swift */,
 				61B3CD37221E523700B05431 /* ViewController.swift */,
+				61DBCDD52224F5B50091EF26 /* PlayerManager.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		61DBCDD42224F58C0091EF26 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				61B3CD6A221E9DDE00B05431 /* Utilities.swift */,
+				61DBCDD02224E2050091EF26 /* EnumDefine.swift */,
+				61DBCDD22224E2100091EF26 /* StructDefine.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		65059EAD0A96ED604FDCF9D2 /* Pods */ = {
@@ -439,7 +453,9 @@
 				61B3CD38221E523700B05431 /* ViewController.swift in Sources */,
 				61DBCDD32224E2100091EF26 /* StructDefine.swift in Sources */,
 				61B3CD69221E962500B05431 /* VideoPlayerController.swift in Sources */,
+				61DBCDD8222523B20091EF26 /* UIView+Ext.swift in Sources */,
 				61B3CD6B221E9DDE00B05431 /* Utilities.swift in Sources */,
+				61DBCDD62224F5B50091EF26 /* PlayerManager.swift in Sources */,
 				61B3CD36221E523700B05431 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

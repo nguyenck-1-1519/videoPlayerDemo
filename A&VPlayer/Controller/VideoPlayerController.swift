@@ -36,8 +36,9 @@ class VideoPlayerController: UIViewController {
     var timeObserver: Any?
     var progressView = UIProgressView()
 
-    // BanNN: chưa có handle khi video chạy xong thì next item hoặc đổi button play <-> pause
-    // BanNN: chưa xử lý enable button next và previous
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,8 @@ class VideoPlayerController: UIViewController {
         configSpeedSegment()
         PlayerManager.shared.delegate = self
         let isPlaying = PlayerManager.shared.avPlayer != nil
-        isPlaying ? PlayerManager.shared.continueAVPlayer(forController: self) : PlayerManager.shared.configAVPlayer(forController: self)
+        isPlaying ? PlayerManager.shared.continueAVPlayer(forController: self) :
+            PlayerManager.shared.configAVPlayer(forController: self)
         configSeeker()
     }
 
@@ -68,7 +70,7 @@ class VideoPlayerController: UIViewController {
         PlayerManager.shared.stopObserver(forController: self)
     }
 
-    // MARK: Observer
+    // MARK: KVO Observer
     override func observeValue(forKeyPath keyPath: String?, of object: Any?,
                                change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == #keyPath(AVPlayerItem.status) {
@@ -79,6 +81,7 @@ class VideoPlayerController: UIViewController {
             }
             switch status {
             case .readyToPlay:
+                // time to play
                 currentTrack?.state = .readyToPlay
                 playButton.setImage(#imageLiteral(resourceName: "pauseButton"), for: .normal)
                 PlayerManager.shared.play()
@@ -86,9 +89,8 @@ class VideoPlayerController: UIViewController {
                 break
             }
         } else if keyPath == Constant.loadTimeRangedKey {
-            let duration = avPlayer?.currentItem?.asset.duration
-            let durationSeconds = CMTimeGetSeconds(duration ?? .zero)
-            onLoadedTimeRangedChanged(newValue: avPlayer?.currentItem?.loadedTimeRanges, duration: CGFloat(durationSeconds))
+            // update buffer display
+            onLoadedTimeRangedChanged()
         }
     }
 
@@ -98,13 +100,15 @@ class VideoPlayerController: UIViewController {
             Utilities.formatDurationTime(time: Int(duration))
     }
 
-    private func onLoadedTimeRangedChanged(newValue: [NSValue]?, duration: CGFloat) {
-        // BanNN: không nên dùng [0] nên dùng .first và có guard let đầy đủ. thử link: https://devimages-cdn.apple.com/samplecode/avfoundationMedia/AVFoundationQueuePlayer_HLS2/master.m3u8 này sẽ thấy crash sml chỗ này =))
+    private func onLoadedTimeRangedChanged() {
+        let duration = avPlayer?.currentItem?.asset.duration
+        let durationSeconds = CMTimeGetSeconds(duration ?? .zero)
+        let newValue = avPlayer?.currentItem?.loadedTimeRanges
         guard let timeRange = newValue?.first?.timeRangeValue else {
             return
         }
         let loadedValue = CMTimeGetSeconds(timeRange.duration)
-        progressView.setProgress(Float(CGFloat(loadedValue) / duration), animated: true)
+        progressView.setProgress(Float(CGFloat(loadedValue) / CGFloat(durationSeconds)), animated: true)
     }
 
     private func configSeeker() {
@@ -123,6 +127,7 @@ class VideoPlayerController: UIViewController {
                 progressView.centerYAnchor.constraint(equalTo: timeTrackingSlider.centerYAnchor, constant: 1),
                 progressView.heightAnchor.constraint(equalToConstant: 1)
             ])
+        onLoadedTimeRangedChanged()
         // time label
         setTimeLabel(withDuration: CMTimeGetSeconds(avPlayer?.currentItem?.asset.duration ?? .zero), currentTime: 0)
     }
@@ -134,6 +139,10 @@ class VideoPlayerController: UIViewController {
         nextButton.setImage(nextImage, for: .normal)
         previousButton.setImage(previousImage, for: .normal)
         minimizeButton.setImage(downArrowImage, for: .normal)
+        if let avPlayer = PlayerManager.shared.avPlayer {
+            avPlayer.isPlaying ? playButton.setImage(#imageLiteral(resourceName: "pauseButton"), for: .normal) :
+                playButton.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
+        }
         nextButton.tintColor = .white
         previousButton.tintColor = .white
         minimizeButton.tintColor = .white
@@ -154,10 +163,6 @@ class VideoPlayerController: UIViewController {
         let toolbarHeight: CGFloat = 30
         let controlViewHeight: CGFloat = 60
 
-        /* BanNN: animation ẩn đi bằng cách cho constraint top với bottom về âm? nhưng sao lại là 300, 600?
-        Với cả sửa constant thế này sẽ không có animation đâu. nó sẽ đổi ngay lập tức.
-        Để có animation cần thêm: self.view.layoutIfNeeded() vào trong animation
-        */
         UIView.animate(withDuration: 0.5) { [weak self] in
             self?.topToolbarConstraint.constant = isHidden ? -toolbarHeight * 2 : 0
             self?.bottomControlViewConstraint.constant = isHidden ? -controlViewHeight : 0
@@ -225,14 +230,12 @@ class VideoPlayerController: UIViewController {
     @IBAction func onNextButtonClicked(_ sender: UIButton) {
         configSpeedSegment()
         resetSeeker()
-//        playButton.setImage(#imageLiteral(resourceName: "pauseButton"), for: .normal)
         PlayerManager.shared.playNext(forController: self)
     }
 
     @IBAction func onPreviousButtonClicked(_ sender: UIButton) {
         configSpeedSegment()
         resetSeeker()
-//        playButton.setImage(#imageLiteral(resourceName: "pauseButton"), for: .normal)
         PlayerManager.shared.playPrevious(forController: self)
     }
 
@@ -242,15 +245,14 @@ class VideoPlayerController: UIViewController {
     }
 
     @IBAction func onSpeedSegmentClicked(_ sender: Any) {
-        let speed = speedSegment.selectedSegmentIndex == 0 ? 0.5 : Double(speedSegment.selectedSegmentIndex)
-        avPlayer?.rate = Float(speed)
+        PlayerManager.shared.playbackRate = speedSegment.selectedSegmentIndex == 0 ? Float(0.5) :
+            Float(speedSegment.selectedSegmentIndex)
     }
 }
 
 extension VideoPlayerController: PlayerManagerDelegate {
 
     func onConfigAVPlayerTrigger(layer: AVPlayerLayer?) {
-        // template code
         guard let layer = layer else { return }
         self.avPlayerLayer = layer
         urls = PlayerManager.shared.playlistUrls

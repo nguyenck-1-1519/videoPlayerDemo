@@ -27,6 +27,22 @@ class ViewController: UIViewController {
         watchVideoButton.clipsToBounds = true
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        // check if view is not  
+        if self.viewIfLoaded?.window == nil {
+            return
+        }
+        guard let avPlayerLayer = PlayerManager.shared.avPlayerLayer else {
+            return
+        }
+        let deviceOrientation = Utilities.getDeviceOrientation(screenSize: size)
+        avPlayerLayer.videoGravity = deviceOrientation == .portrait ? .resizeAspect : .resizeAspectFill
+        let pWidth = size.width * 2 / 3
+        let pHeight = pWidth / 16 * 9
+        avPlayerLayer.frame = CGRect(x: 0, y: 0, width: pWidth, height: pHeight)
+    }
+
     private func prapareToVideoView() {
         guard let path = Bundle.main.path(forResource: "kPop", ofType: "mp4") else {
             return
@@ -57,8 +73,9 @@ extension ViewController: VideoPlayerControllerDelegate {
         minimizePlayerView.dropShadow()
         guard let avlayer = PlayerManager.shared.avPlayerLayer else { return }
         minimizePlayerView.layer.addSublayer(avlayer)
-        avlayer.frame = CGRect(x: 0, y: 0, width: minimizePlayerView.bounds.width,
-                               height: minimizePlayerView.bounds.height)
+        let pWidth: CGFloat = UIScreen.main.bounds.width * 2 / 3
+        let pHeight: CGFloat = pWidth / 16 * 9
+        avlayer.frame = CGRect(x: 0, y: 0, width: pWidth, height: pHeight)
 
     }
 

@@ -23,6 +23,11 @@ class PlayerManager {
     var currentTrack: Track?
     var playlistUrls: [URL]?
     var timeObserver: Any?
+    var playbackRate: Float = 1 {
+        didSet {
+            avPlayer?.rate = playbackRate
+        }
+    }
 
     weak var delegate: PlayerManagerDelegate?
 
@@ -42,6 +47,7 @@ class PlayerManager {
     func play() {
         guard let avPlayer = avPlayer, currentTrack?.state != .playedToTheEnd else { return }
         avPlayer.play()
+        avPlayer.rate = playbackRate
     }
 
     func pause() {
@@ -50,12 +56,14 @@ class PlayerManager {
     }
 
     func playNext(forController controller: UIViewController) {
+        playbackRate = 1
         pause()
         currentTrack = getNextItem()
         prepareToPlay(forController: controller)
     }
 
     func playPrevious(forController controller: UIViewController) {
+        playbackRate = 1
         pause()
         currentTrack = getPreviousItem()
         prepareToPlay(forController: controller)
